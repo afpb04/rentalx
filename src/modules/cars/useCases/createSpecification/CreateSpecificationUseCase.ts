@@ -11,7 +11,7 @@ class CreateSpecificationUseCase {
   constructor(
     @inject('SpecificationRepository')
     private specificationRepository: ISpecificationRepository,
-  ) { }
+  ) {}
   execute({ name, description }: IRequest): void {
     const specificationAlreadyExists = this.specificationRepository.findByName(
       name,

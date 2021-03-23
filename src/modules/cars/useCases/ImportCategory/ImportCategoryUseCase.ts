@@ -13,7 +13,7 @@ class ImportCategoryUseCase {
   constructor(
     @inject('CategoriesRepository')
     private categoryRepository: ICategoriesRepository,
-  ) { }
+  ) {}
 
   loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
