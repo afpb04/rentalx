@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 
 services:
   database_ignite:
@@ -13,8 +13,7 @@ services:
       - POSTGRES_DB=rentx
     volumes:
       - pgdata:/data/postgres
-    networks:
-      - app-network
+
   app:
     build: .
     container_name: rentx
@@ -24,13 +23,10 @@ services:
       - 9229:9229
     volumes:
       - .:/usr/app
-    networks:
-      - app-network
-networks:
-  app-network:
-    driver: bridge
+    links:
+      - database_ignite
+    depends_on:
+      - database_ignite
 volumes:
   pgdata:
     driver: local
-
-
