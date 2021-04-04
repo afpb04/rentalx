@@ -1,16 +1,16 @@
-import CategoryRepositoryInMemory from '@modules/cars/repositories/in-memory/CategoryRepositoryInMemory';
+import CategoriesRepositoryInMemory from '@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory';
 import AppError from '@shared/errors/AppError';
 
 import CreateCategoryUseCase from './CreateCategoryUseCase';
 
 let createCategoryUseCase: CreateCategoryUseCase;
-let categoryRepositoryInMemory: CategoryRepositoryInMemory;
+let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
 
 describe('Create Category ', () => {
   beforeEach(() => {
-    categoryRepositoryInMemory = new CategoryRepositoryInMemory();
+    categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
     createCategoryUseCase = new CreateCategoryUseCase(
-      categoryRepositoryInMemory,
+      categoriesRepositoryInMemory,
     );
   });
 
@@ -21,7 +21,7 @@ describe('Create Category ', () => {
     };
     await createCategoryUseCase.execute(category);
 
-    const categoryCreated = await categoryRepositoryInMemory.findByName(
+    const categoryCreated = await categoriesRepositoryInMemory.findByName(
       category.name,
     );
     expect(categoryCreated).toHaveProperty('id');

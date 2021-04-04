@@ -3,7 +3,7 @@ import ICategoryRepository, {
   ICreateCategoryDTO,
 } from '../ICategoriesRepository';
 
-class CategoryRepositoryInMemory implements ICategoryRepository {
+class CategoriesRepositoryInMemory implements ICategoryRepository {
   categories: Category[] = [];
   async findByName(name: string): Promise<Category> {
     const category = this.categories.find(category => category.name === name);
@@ -23,4 +23,4 @@ class CategoryRepositoryInMemory implements ICategoryRepository {
     this.categories.push(category);
   }
 }
-export default CategoryRepositoryInMemory;
+export default CategoriesRepositoryInMemory;
