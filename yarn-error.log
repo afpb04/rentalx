@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add tsconfig-paths -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add dayjs
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\afpb0\AppData\Local\Microsoft\WindowsApps;C:\Users\afpb0\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\afpb0\AppData\Local\GitHubDesktop\bin;C:\Users\afpb0\AppData\Local\Yarn\bin;C:\Program Files\heroku\bin;C:\Users\afpb0\AppData\Roaming\npm
@@ -23,9 +23,10 @@ npm manifest:
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-      "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn ./src/server.ts",
-      "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-      "test": "jest"
+      "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn ./src/shared/infra/http/server.ts",
+      "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+      "test": "jest",
+      "seed:admin": "ts-node-dev ./src/shared/infra/typeorm/seed/admin.ts"
     },
     "dependencies": {
       "bcrypt": "^5.0.1",
@@ -62,6 +63,7 @@ npm manifest:
       "prettier": "^2.2.1",
       "ts-jest": "^26.5.4",
       "ts-node-dev": "^1.1.6",
+      "tsconfig-paths": "^3.9.0",
       "typescript": "^4.2.3"
     }
   }

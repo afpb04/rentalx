@@ -18,7 +18,7 @@ describe('Create Car Specification ', () => {
     );
   });
   it('should not be able to add a new specification to a now-existent car', async () => {
-    expect(async () => {
+    await expect(async () => {
       await createCarSpecificationUseCase.execute({
         car_id: 'car_id',
         specifications_id: ['specification'],
