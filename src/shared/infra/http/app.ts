@@ -11,7 +11,7 @@ import router from '@shared/infra/http/routes';
 import swaggerFile from '../../../swagger.json';
 import createConnection from '../typeorm';
 
-createConnection();
+createConnection('localhost');
 const app = express();
 
 app.use(express.json());
